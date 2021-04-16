@@ -1,9 +1,13 @@
-package com.bandtec.lutador;
+package com.bandtec.lutador.dominio;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Lutador {
@@ -11,15 +15,19 @@ public class Lutador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank
+    @Size(min=3,max = 15)
     private String nome;
 
+    @PositiveOrZero
     private Double forcaGolpe;
 
-    private Double vida;
+    private Double vida = 100.0;
 
-    private Integer concentracaoRealizada;
+    private Integer concentracaoRealizada = 0;
 
-    private Boolean vivo;
+    private Boolean vivo = true;
+
 
     public Integer getId() {
         return id;
@@ -43,6 +51,14 @@ public class Lutador {
 
     public void setForcaGolpe(Double forcaGolpe) {
         this.forcaGolpe = forcaGolpe;
+    }
+
+    public Double getVida() {
+        return vida;
+    }
+
+    public void setVida(Double vida) {
+        this.vida = vida;
     }
 
     public Integer getConcentracaoRealizada() {
