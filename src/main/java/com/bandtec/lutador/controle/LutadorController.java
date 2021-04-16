@@ -63,10 +63,8 @@ public class LutadorController {
         if(repository.existsById(idLutadorApanha) && repository.existsById(idLutadorBate)){
             Lutador lutador1 = repository.findById(idLutadorBate).get();
             Lutador lutador2 = repository.findById(idLutadorApanha).get();
-            lutador.setVida(lutador.getVida() * 1.15);
-            lutador.setConcentracaoRealizada(lutador.getConcentracaoRealizada()+1);
-            repository.save(lutador);
-            return ResponseEntity.status(201).build(lutador1,lutador2);
+
+            return ResponseEntity.status(201).build();
         }
         else{
             return ResponseEntity.status(404).build();
